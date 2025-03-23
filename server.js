@@ -13,12 +13,18 @@ app.use(
 );
 app.use(express.json());
 
+// mongoose
+//   .connect(
+//     "mongodb+srv://pentapativamsi:Vamsi2025@cluster0.yojlo.mongodb.net/myfirstdb?retryWrites=true&w=majority&appName=Cluster0"
+//   )
+//   .then(() => console.log("MongoDB Connected…"))
+//   .catch((err) => console.log(err));
+
 mongoose
-  .connect(
-    "mongodb+srv://pentapativamsi:Vamsi2025@cluster0.yojlo.mongodb.net/myfirstdb?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected…"))
   .catch((err) => console.log(err));
+
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
